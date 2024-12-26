@@ -18,11 +18,17 @@ Start the server by node server.js in the terminal inside the /Week1/src folder.
 
 
 4. API Endpoints:
+   
 The application provides several API endpoints for managing tasks:
+
 •	GET /tasks: Retrieves a list of all tasks stored in the database.
+
 •	GET /tasks/:id: Retrieves a single task by its ID.
+
 •	POST /tasks: Creates a new task. The request body should contain title and description properties for the new task. (middleware validation)
+
 •	PUT /tasks/:id: Updates an existing task by its ID. The request body should contain the updated properties for the task.
+
 •	DELETE /tasks/:id: Deletes a task by its ID.
 
 By following these steps and understanding the functionalities, you can effectively use this Node.js application to manage your tasks through API requests.

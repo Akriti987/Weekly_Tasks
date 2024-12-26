@@ -3,21 +3,17 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 const connectToDatabase = require('./config/db.js'); // Import database connection 
 const Task = require('./model/schema.js'); // Import Task model
-
-
 const app = express();
+
 const port = process.env.PORT || 3000;
 connectToDatabase.connectToDatabase();
 
 app.use(bodyParser.json());
 
-// Sample data (replace this array with a database)
 //let tasks = [
 //   { id: 1, title: 'Task 1', description: 'Description for Task 1', completed: false }
 //];
 
-// Generate unique IDs for new tasks
-//let nextId = 1;
 
 // Middleware for request validation
 const validateTask = (req, res, next) => {
@@ -73,13 +69,7 @@ app.post('/tasks', validateTask, async (req, res) => {
 
 // PUT /tasks/:id - Update an existing task
 app.put('/tasks/:id', validateTask, async (req, res) => {
-  // const id = parseInt(req.params.id);
-  // const taskIndex = tasks.findIndex(t => t.id === id);
-  // if (taskIndex !== -1) {
-    //merges the entire new req body in the old body
-    //tasks[taskIndex].body = req.body;
     
-    //Assuming title, description and completed are there in the new request
     // tasks[taskIndex].title = req.body.title;
     // tasks[taskIndex].description = req.body.description;
     // tasks[taskIndex].completed=req.body.completed;
@@ -113,7 +103,8 @@ app.delete('/tasks/:id', async (req, res) => {
     if (!result) {
       return res.status(404).json({ error: 'Task not found' });
     }
-    res.sendStatus(204).json({ message: 'Task deleted successfully'});
+    res.status(204).json();
+  
 });
 
 app.listen(port, () => {

@@ -68,43 +68,22 @@ app.post('/tasks', validateTask, async (req, res) => {
 });
 
 // PUT /tasks/:id - Update an existing task
-app.put('/tasks/:id', validateTask, async (req, res) => {
-    
-    // tasks[taskIndex].title = req.body.title;
-    // tasks[taskIndex].description = req.body.description;
-    // tasks[taskIndex].completed=req.body.completed;
-
-  //   tasks[taskIndex] = { ...tasks[taskIndex], ...req.body };
-  //   res.json(tasks[taskIndex]);
-  // } else {
-  //   res.status(404).json({ error: 'Task not found' });
-  // }
-
+app.put('/tasks/:id',validateTask, async (req, res) => {
+  
   const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true }); 
     if (!updatedTask) {
       return res.status(404).json({ error: 'Task not found' });
     }
     res.json(updatedTask);
-
 });
 
 // DELETE /tasks/:id - Delete a task
 app.delete('/tasks/:id', async (req, res) => {
-  // const id = parseInt(req.params.id);
-  // const taskIndex = tasks.findIndex(t => t.id === id);
-  // if (taskIndex !== -1) {
-  //   tasks.splice(taskIndex, 1);
-  //   res.sendStatus(204); // No content
-  //   nextId--;
-  // } else {
-  //   res.status(404).json({ error: 'Task not found' });
-  // }
   const result = await Task.findByIdAndDelete(req.params.id); 
     if (!result) {
       return res.status(404).json({ error: 'Task not found' });
     }
     res.status(204).json();
-  
 });
 
 app.listen(port, () => {

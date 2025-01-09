@@ -14,7 +14,6 @@ app.use(bodyParser.json());
 //   { id: 1, title: 'Task 1', description: 'Description for Task 1', completed: false }
 //];
 
-
 // Middleware for request validation
 const validateTask = (req, res, next) => {
   const { title, description } = req.body;
@@ -56,7 +55,7 @@ app.get('/tasks/:id', async (req, res) => {
 app.post('/tasks', validateTask, async (req, res) => {
   // const newTask = {
   //   id: nextId++,
-  //   title: req.body.title,
+  //   title:req.body.title,
   //   description: req.body.description,
   //   completed: false
   // };

@@ -1,0 +1,3 @@
+Word Count: 6
+Punctuation Count: 3
+Date Pattern Count: 0
